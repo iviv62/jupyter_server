@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  jupyter-server:
+    build: .
+    container_name: jupyter-server
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebooks:/home/jovyan/work
+    environment:
+      - JUPYTER_TOKEN=devtoken
