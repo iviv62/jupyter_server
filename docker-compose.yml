@@ -7,5 +7,17 @@ services:
       - "8888:8888"
     volumes:
       - ./notebooks:/home/jovyan/work
+      - ./notebook_history:/home/jovyan/notebook_history
     environment:
       - JUPYTER_TOKEN=devtoken
+
+  mongodb:
+    image: mongo:7
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongo_data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
+      - MONGO_INITDB_ROOT_PASSWORD=secret

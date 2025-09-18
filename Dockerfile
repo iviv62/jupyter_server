@@ -4,6 +4,14 @@ FROM jupyter/base-notebook:latest
 # Set a working directory for notebooks
 WORKDIR /home/jovyan/work
 
+# Copy example server extensions to a writable directory
+COPY examples/simple /home/jovyan/simple_example
+# Change ownership to jovyan and install as jovyan user
+USER root
+RUN chown -R jovyan:users /home/jovyan/simple_example
+USER jovyan
+RUN pip install /home/jovyan/simple_example
+
 # (Optional) Install additional Python packages here
 # RUN pip install <package-name>
 

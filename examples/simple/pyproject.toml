@@ -22,8 +22,7 @@ test = [
 
 [project.scripts]
 jupyter-simple-ext1 = "simple_ext1.application:main"
-jupyter-simple-ext11 = "simple_ext11.application:main"
-jupyter-simple-ext2 = "simple_ext2.application:main"
+
 
 [tool.hatch.version]
 source = "nodejs"
@@ -32,7 +31,7 @@ source = "nodejs"
 "etc/jupyter/jupyter_server_config.d" = "etc/jupyter/jupyter_server_config.d"
 
 [tool.hatch.build.targets.wheel]
-packages = ["simple_ext1", "simple_ext2", "simple_ext11"]
+packages = ["simple_ext1",]
 
 [tool.hatch.build.hooks.jupyter-builder]
 dependencies = [

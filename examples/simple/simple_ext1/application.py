@@ -6,6 +6,7 @@ from traitlets import Unicode
 
 from jupyter_server.extension.application import ExtensionApp, ExtensionAppJinjaMixin
 
+
 from .handlers import (
     DefaultHandler,
     ErrorHandler,
@@ -14,6 +15,7 @@ from .handlers import (
     TemplateHandler,
     TypescriptHandler,
 )
+from .history_handler import NotebookHistoryHandler
 
 DEFAULT_STATIC_FILES_PATH = os.path.join(os.path.dirname(__file__), "static")
 DEFAULT_TEMPLATE_FILES_PATH = os.path.join(os.path.dirname(__file__), "templates")
@@ -52,6 +54,7 @@ class SimpleApp1(ExtensionAppJinjaMixin, ExtensionApp):
                 (rf"/{self.name}/template1/(.*)$", TemplateHandler),
                 (rf"/{self.name}/redirect", RedirectHandler),
                 (rf"/{self.name}/typescript/?", TypescriptHandler),
+                (rf"/{self.name}/history", NotebookHistoryHandler),
                 (rf"/{self.name}/(.*)", ErrorHandler),
             ]
         )
